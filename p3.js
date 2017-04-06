@@ -1,5 +1,49 @@
 //basic format for jquery inputs, and event methods from w3schools
 
+function compute_winner(localChoice) {
+  var remote = Math.floor(Math.random()*(2-0+1)+0);
+  var remoteChoice;
+  if(remote == 0) {
+    remoteChoice = 'rock';
+  }
+  else if(remote == 1) {
+    remoteChoice = 'paper';
+  }
+  else {
+    remoteChoice = 'scissors';
+  }
+  console.log(remote+" was thrown by remote.")
+  console.log(remoteChoice + " was thrown by remote.")
+  if (localChoice == 'rock')
+    {
+    if(remoteChoice == 'rock')
+      draw_images(localChoice,remoteChoice,'draw');
+	
+    else if($remoteChoice == 'paper')
+      drawImage(localChoice,remoteChoice,'lose');
+    else
+      drawImage(localChoice,remoteChoice,'win');
+    }
+  else if($localChoice == 'paper')
+    {
+    if(remoteChoice == 'rock')
+      draw_images(localChoice,remoteChoice,'win');
+    else if(remoteChoice == 'paper')
+      drawImage(localChoice,emoteChoice,'draw');
+    else
+      drawImage(localChoice,remoteChoice,'lose');
+    }
+  else
+    {
+    if(remoteChoice == 'rock')
+      draw_images(localChoice,remoteChoice,'lose');
+    else if(remoteChoice == 'paper')
+      drawImage(localChoice,remoteChoice,'win');
+    else
+      drawImage(localChoice,remoteChoice,'draw');
+    }
+  }
+
 function checkPwd() {
     var user=document.getElementById('username').value;
     var pwd=document.getElementById('password').value;

@@ -1,7 +1,3 @@
-<?php include_once '../php/proj2.php'; 
-
-
-
 ?>
 <div id='sidebarLeft'>
 <nav>
@@ -11,7 +7,9 @@
 <div id='itemDisplay'>
 <section>
 	<head>
+<!--  removed because not in repository.  jquery gets loaded as part of index.php ./cdn/cdn.php
 		<script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+-->
 
 		<script>
 			function compute_winner($localChoice)
@@ -166,6 +164,7 @@ session_start();
 </section>
 </div>
 <script src='p3.js'></script>
+<script src='p3rps.js'></script>
 <script>
  //console.log("UserName: "+results['userName']+"<br/>");
  //console.log("Display Name: "+results['displayName']+"<br/>");
