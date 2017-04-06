@@ -1,7 +1,8 @@
-<?php
-?>
+<?php include_once '../php/proj2.php'; 
 
-<?php include_once '../php/proj2.php'; ?>
+
+
+?>
 <div id='sidebarLeft'>
 <nav>
 <?php include_once 'sidebarLeft.php'; ?>
@@ -13,6 +14,45 @@
 		<script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
 
 		<script>
+			function compute_winner($localChoice)
+			{
+				var remote = Math.floor(Math.Random(0,2)*10);
+				if(remote == 0)
+					$remoteChoice = 'rock';
+				elseif(remote == 1)
+					$remoteChoice = 'paper';
+				else
+					$remoteChoice = 'scissors';
+
+				if($localChoice == 'rock')
+				{
+					if($remoteChoice == 'rock')
+						draw_images($localChoice,$remoteChoice,'draw');
+					elseif($remoteChoice == 'paper')
+						drawImage($localChoice,$remoteChoice,'lose');
+					else
+						drawImage($localChoice,$remoteChoice,'win');
+				}
+				elseif($localChoice == 'paper')
+				{
+					if($remoteChoice == 'rock')
+						draw_images($localChoice,$remoteChoice,'win');
+					elseif($remoteChoice == 'paper')
+						drawImage($localChoice,$remoteChoice,'draw');
+					else
+						drawImage($localChoice,$remoteChoice,'lose');
+				}
+				else
+				{
+					if($remoteChoice == 'rock')
+						draw_images($localChoice,$remoteChoice,'lose');
+					elseif($remoteChoice == 'paper')
+						drawImage($localChoice,$remoteChoice,'win');
+					else
+						drawImage($localChoice,$remoteChoice,'draw');
+				}
+			}
+
 			function draw_images($localChoice, $remoteChoice, $result) {
 				if($localChoice == 'rock')
 					draw_image_rock('left');
@@ -102,7 +142,7 @@
 		</center>
 		<br/><br/>
 		<center>
-		<img align="middle" onclick="draw_images('rock','scissors','win')" id="rock" src="img/rocks.png" alt="rock" width="277" height="210"> <!-- add the onclick="draw_images()" part to each img --> 
+		<img align="middle" onclick="compute_winner('rock')" id="rock" src="img/rocks.png" alt="rock" width="277" height="210"> <!-- add the onclick="draw_images()" part to each img --> 
 		<!-- onclick="draw_images('rock','scissors','win')" -->
 		<img align="middle" id="paper" src="img/paper.png" alt="paper" width="277" height="210">
 
