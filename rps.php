@@ -19,7 +19,7 @@
 				var remote = Math.floor(Math.random()*(2-0+1)+0);
 				if(remote == 0)
 					$remoteChoice = 'rock';
-				elseif(remote == 1)
+				else if(remote == 1)
 					$remoteChoice = 'paper';
 				else
 					$remoteChoice = 'scissors';
@@ -28,16 +28,16 @@
 				{
 					if($remoteChoice == 'rock')
 						draw_images($localChoice,$remoteChoice,'draw');
-					elseif($remoteChoice == 'paper')
+					else if($remoteChoice == 'paper')
 						drawImage($localChoice,$remoteChoice,'lose');
 					else
 						drawImage($localChoice,$remoteChoice,'win');
 				}
-				elseif($localChoice == 'paper')
+				else if($localChoice == 'paper')
 				{
 					if($remoteChoice == 'rock')
 						draw_images($localChoice,$remoteChoice,'win');
-					elseif($remoteChoice == 'paper')
+					else if($remoteChoice == 'paper')
 						drawImage($localChoice,$remoteChoice,'draw');
 					else
 						drawImage($localChoice,$remoteChoice,'lose');
@@ -46,7 +46,7 @@
 				{
 					if($remoteChoice == 'rock')
 						draw_images($localChoice,$remoteChoice,'lose');
-					elseif($remoteChoice == 'paper')
+					else if($remoteChoice == 'paper')
 						drawImage($localChoice,$remoteChoice,'win');
 					else
 						drawImage($localChoice,$remoteChoice,'draw');
