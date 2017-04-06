@@ -17,7 +17,6 @@
 			function compute_winner($localChoice)
 			{
 				var remote = Math.floor(Math.random()*(2-0+1)+0);
-;
 				if(remote == 0)
 					$remoteChoice = 'rock';
 				elseif(remote == 1)
