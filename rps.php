@@ -144,9 +144,9 @@
 		<center>
 		<img align="middle" onclick="compute_winner('rock')" id="rock" src="img/rocks.png" alt="rock" width="277" height="210"> <!-- add the onclick="draw_images()" part to each img --> 
 		<!-- onclick="draw_images('rock','scissors','win')" -->
-		<img align="middle" id="paper" src="img/paper.png" alt="paper" width="277" height="210">
+		<img align="middle" onclick="compute_winner('rock')" id="paper" src="img/paper.png" alt="paper" width="277" height="210">
 
-		<img align="middle" id="scissors" src="img/scissors.png" alt="scissors" width="277" height="210">
+		<img align="middle" onclick="compute_winner('rock')" id="scissors" src="img/scissors.png" alt="scissors" width="277" height="210">
 		</center>
 		<br/>	
 		<center>
