@@ -1,3 +1,5 @@
+<?php
+session_start();
 ?>
 <div id='sidebarLeft'>
 <nav>
@@ -11,9 +13,11 @@
 		<script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
 -->
 
+<!--
 		<script>
-			function compute_winner($localChoice)
+			function compute_winner(var localChoice)
 			{
+			console.log("local Choise: "+localChoice);
 				var remote = Math.floor(Math.random()*(2-0+1)+0);
 				if(remote == 0)
 					$remoteChoice = 'rock';
@@ -22,41 +26,41 @@
 				else
 					$remoteChoice = 'scissors';
 
-				if($localChoice == 'rock')
+				if(localChoice == 'rock')
 				{
 					if($remoteChoice == 'rock')
-						draw_images($localChoice,$remoteChoice,'draw');
+						draw_images(localChoice,$remoteChoice,'draw');
 					else if($remoteChoice == 'paper')
-						drawImage($localChoice,$remoteChoice,'lose');
+						drawi_images(localChoice,$remoteChoice,'lose');
 					else
-						drawImage($localChoice,$remoteChoice,'win');
+						draw_images(localChoice,$remoteChoice,'win');
 				}
-				else if($localChoice == 'paper')
+				else if(localChoice == 'paper')
 				{
 					if($remoteChoice == 'rock')
-						draw_images($localChoice,$remoteChoice,'win');
+						draw_images(localChoice,$remoteChoice,'win');
 					else if($remoteChoice == 'paper')
-						drawImage($localChoice,$remoteChoice,'draw');
+						draw_images(localChoice,$remoteChoice,'draw');
 					else
-						drawImage($localChoice,$remoteChoice,'lose');
+						draw_images(localChoice,$remoteChoice,'lose');
 				}
 				else
 				{
 					if($remoteChoice == 'rock')
-						draw_images($localChoice,$remoteChoice,'lose');
+						draw_images(localChoice,$remoteChoice,'lose');
 					else if($remoteChoice == 'paper')
-						drawImage($localChoice,$remoteChoice,'win');
+						draw_images(localChoice,$remoteChoice,'win');
 					else
-						drawImage($localChoice,$remoteChoice,'draw');
+						draw_images(localChoice,$remoteChoice,'draw');
 				}
 			}
 
-			function draw_images($localChoice, $remoteChoice, $result) {
-				if($localChoice == 'rock')
+			function draw_images(localChoice, $remoteChoice, $result) {
+				if(localChoice == 'rock')
 					draw_image_rock('left');
-				else if($localChoice == 'paper')
+				else if(localChoice == 'paper')
 					draw_image_paper('left');
-				else if($localChoice == 'scissors')
+				else if(localChoice == 'scissors')
 					draw_image_scissors('left');
 				if($remoteChoice == 'rock')
 					draw_image_rock('right');
@@ -130,6 +134,7 @@
 				setup();
 			}
 		</script>
+-->
 	</head>
 	<body onload="setup()" >
 		<center>
@@ -142,9 +147,9 @@
 		<center>
 		<img align="middle" onclick="compute_winner('rock')" id="rock" src="img/rocks.png" alt="rock" width="277" height="210"> <!-- add the onclick="draw_images()" part to each img --> 
 		<!-- onclick="draw_images('rock','scissors','win')" -->
-		<img align="middle" onclick="compute_winner('rock')" id="paper" src="img/paper.png" alt="paper" width="277" height="210">
+		<img align="middle" onclick="compute_winner('paper')" id="paper" src="img/paper.png" alt="paper" width="277" height="210">
 
-		<img align="middle" onclick="compute_winner('rock')" id="scissors" src="img/scissors.png" alt="scissors" width="277" height="210">
+		<img align="middle" onclick="compute_winner('scissors')" id="scissors" src="img/scissors.png" alt="scissors" width="277" height="210">
 		</center>
 		<br/>	
 		<center>
@@ -153,9 +158,6 @@
 	</body>
 
 
-<?php
-session_start();
-?>
 </section>
 </div>
 <div id='sidebarRight'>
@@ -164,7 +166,6 @@ session_start();
 </section>
 </div>
 <script src='p3.js'></script>
-<script src='p3rps.js'></script>
 <script>
  //console.log("UserName: "+results['userName']+"<br/>");
  //console.log("Display Name: "+results['displayName']+"<br/>");

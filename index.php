@@ -16,7 +16,7 @@
                 content='Information Technology'/>
 
 <!--Install Genric Required CSS,Jquery,JqueryUI,and bootsrap librarys from  -->
-<?php include_once '../site/cdn.php'; ?>
+<?php include_once './cdn/cdn.php'; ?>
 
 <!--Local CSS -->
 <!-- 
