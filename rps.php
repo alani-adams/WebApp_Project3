@@ -153,7 +153,10 @@ session_start();
 		</center>
 		<br/>	
 		<center>
+<!--
 			<a href="#" onclick="reset()">Play Again!</a>
+-->
+			<button type='button' onclick="reset()">Play Again!</button>
 		</center>	
 	</body>
 

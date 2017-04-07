@@ -21,8 +21,8 @@
 <!--Local CSS -->
 <!-- 
  <link rel='stylesheet' href='/site/site.css'>
-<link rel='stylesheet' href='p3.css'>
 -->
+<link rel='stylesheet' href='p3.css'>
 
 <!--Local PHP -->
 <?php
