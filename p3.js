@@ -3,7 +3,7 @@
 function top10() {
     $.post("./db/top10.php",{},
     function(returnData) {
-	$("#topList").append(returnData);
+	$("#topList").html(returnData);
         console.log(returnData);
         });
 }//top10 function end
@@ -139,7 +139,9 @@ var userName=document.getElementById('userLabel').dataset.user;
 updateScore(userName,score);
 draw_images(localChoice,remoteChoice,score);
 // buttons are set to toggle so they are not on page at same time
-	$("#playAgainButton").toggle();
+	$("#playAgainButton1").toggle();
+	$("#playAgainButton2").toggle();
+	$("#playAgainButton3").toggle();
 	$("#rock").toggle();
 	$("#paper").toggle();
 	$("#scissors").toggle();
@@ -224,7 +226,9 @@ function setup() {
 }
 
 function reset() {
-	$("#playAgainButton").toggle();
+	$("#playAgainButton1").toggle();
+	$("#playAgainButton2").toggle();
+	$("#playAgainButton3").toggle();
 	$("#rock").toggle();
 	$("#paper").toggle();
 	$("#scissors").toggle();

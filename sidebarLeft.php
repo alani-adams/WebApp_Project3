@@ -1,11 +1,10 @@
 <?php
 echo"
-<table id='top10' >
-<tr>
-    <th>Display Name</th>
-    <th>Win</th>
-    <th>Loss</th>
-</tr>
+<h3>TOP Winners</h3>
+<table id='topList' >
+<script>
+top10();
+</script>
 </table>
 <br/>
 ";

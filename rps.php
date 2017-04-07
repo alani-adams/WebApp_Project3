@@ -22,16 +22,23 @@ session_start();
 		<img align="middle" onclick="compute_winner('paper')" id="paper" src="img/paper.png" alt="paper" width="277" height="210">
 
 		<img align="middle" onclick="compute_winner('scissors')" id="scissors" src="img/scissors.png" alt="scissors" width="277" height="210">
+		<img align="middle" onclick="reset()" id="playAgainButton1" src="img/reset.png" alt="Play Again!" width="277" height="210">
+		<img align="middle" onclick="reset()" id="playAgainButton2" src="img/reset.png" alt="Play Again!" width="277" height="210">
+		<img align="middle" onclick="reset()" id="playAgainButton3" src="img/reset.png" alt="Play Again!" width="277" height="210">
+<!--
+			<button id='playAgainButton' type='button' onclick="reset()">Play Again!</button>
+-->
 		</center>
 		<br/>	
 		<center>
 			<a href="#">
-			<button id='playAgainButton' type='button' onclick="reset()">Play Again!</button>
+			</a>
 <script>
 // buttons toggle so is not on page with rock, paper, and scissor buttons
-$("#playAgainButton").toggle();
+$("#playAgainButton1").toggle();
+$("#playAgainButton2").toggle();
+$("#playAgainButton3").toggle();
 </script>
-</a>
 	</center>	
 	</body>
 

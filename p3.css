@@ -2,28 +2,13 @@ main {
   display: flex;
   
 }
-#leftSidebar{
-  background-color: gray;
-  width:15%
+
+#topList tr,th,td{
+border: 1px solid white;
 }
-#itemDisplay{
-  break-before: column;
-  width:70%;
-  left-align: 100px;
-}
-#rightSidebar{
-  background-color: gray;
-  break-before: column;
-  width:15%
-}
-article{
-  font-size:150%;
-  clear:left;
-  top-margin: 10px;
-}
-#itemDisplay img {
-width:15%;
-float:left;
+
+#topList th{
+font-size: 22px;
 }
 
 header {
@@ -327,8 +312,4 @@ button a {
 
 .badBack {
 	background-color:red;
-}
-.article {
-  color:red;
-  background-color:red;
 }
