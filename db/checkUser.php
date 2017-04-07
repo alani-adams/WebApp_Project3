@@ -15,7 +15,7 @@ $result = $stmt->fetch(PDO::FETCH_ASSOC);
 //echo '<pre>' . print_r( $result, 1 ) . '</pre>';
 //echo "<script>console.log($pwd)</script>";dd
 if (password_verify($pwd,$result['hash'])) {
-        //$_SESSION['authenticated']=1;
+  $_SESSION['authenticated']=1;
   $_SESSION['userName']=$result['userName'];
   $_SESSION['displayName']=$result['displayName'];
   $_SESSION['win']=$result['win'];
