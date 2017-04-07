@@ -1,48 +1,41 @@
 <!DOCTYPE html>
 <html lang='en'>
 <head>
- <title>Rock Paper Scissors</title>
+ <title>php test page</title>
   <meta charset='utf-8'>
   <meta name='viewport' content='width=device-width, initial-scale=1'>
         <META name='author'
-                content='Alani Peters, Collin Blanchard and George L Bush'/>
-        <META name= 'date'
-                content='7 Apr 2017'/>
-        <META name='assignment'
-                content='Project 3'/>
-        <META name='acu username'
-                content='glb14e,cab13e,alp13d'/>
-        <META name='major'
-                content='Information Technology'/>
+                content='George L Bush'/>
 
 <!--Install Genric Required CSS,Jquery,JqueryUI,and bootsrap librarys from  -->
-<?php include_once './cdn/cdn.php'; ?>
+<?php include_once '/var/www/html/site/cdn.php'; ?>
 
 <!--Local CSS -->
-<!-- 
  <link rel='stylesheet' href='/site/site.css'>
--->
-<link rel='stylesheet' href='p3.css'>
-
 <!--Local PHP -->
 <?php
 session_start();
-$userName=$_SESSION['userName'];
-$authenticated=$_SESSION['authenticated'];
 ?>
-
 </head>
-
 <body>
-
 <nav id='header'>
-        <nav><a href='/index.html'>Home</a></nav>
-<header id=''>Rock-Paper-Scissors</header>
+<header id=''>Test PHP page</header>
 <br/>
 <hr/>
 </nav>
 <MAIN id='main'>
-<?php include_once "welcome.php" ?>
+<button type='button' onclick="updateScore('test3','win')"> Update Win</button>
+<br/>
+<button type='button' onclick="updateScore('test3','loss')"> Update Loss</button>
+<br/>
+<button type='button' onclick="updateScore('test3','tie')"> Update Tie</button>
+<br/>
+<div id='testing'></div>
+<div id='sidebarRight'>
+<section>
+<?php include_once 'sidebarRight.php'; ?>
+</section>
+</div>
 </MAIN>
 <br/>
 <hr/>
@@ -51,7 +44,7 @@ $authenticated=$_SESSION['authenticated'];
 <br/>
 
 <footer id='footer' class='container-fluid text-center'>
-  <h2>Alani Peters, Collin Blanchard and George L Bush</h2>
+  <h2>glb14e</h2>
 <nav><a href="#top">Click to go to main page</a></nav>
 </footer>
 

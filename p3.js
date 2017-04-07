@@ -1,5 +1,43 @@
 //basic format for jquery inputs, and event methods from w3schools
 
+function top10() {
+    $.post("./db/top10.php",{},
+    function(returnData) {
+	$("#topList").append(returnData);
+        console.log(returnData);
+        });
+}//top10 function end
+
+function updateScore(user,gameResult) {
+if (gameResult=='win' || gameResult=='loss' || gameResult=='tie')
+	console.log("Score is Valid. Updating "+user+" with "+gameResult);
+else
+	console.log('Invalid input check '+ user+' and '+gameResult);
+	
+$.post("./db/updateScore.php",
+      {
+          userName: user ,
+          score: gameResult
+      },
+      function(postReturn){
+console.log('updateScore return');
+	if (postReturn==0) {
+         console.log("returned no results");
+    	}
+else {
+    results=JSON.parse(postReturn);
+    //results=postReturn;
+    //console.log(results);
+    $('#winLable').html("Win: "+results['win']);
+    $('#lossLable').html("Loss: "+results['loss']);
+    //console.log("Loss: "+results['loss']);
+    console.log("Win: "+results['win']);
+    console.log("Loss: "+results['loss']);
+      }//end else
+	}//end postreturn function
+	);//jquerry end
+}//updateScore end
+
 function checkPwd() {
     var user=document.getElementById('username').value;
     var pwd=document.getElementById('password').value;
@@ -56,13 +94,6 @@ $(document).ready(function(){
       });
 });
 
-$("#topList").ready(function(){
-    $.post("./db/top10.php",{},
-    function(returnData) {
-	$("#topList").append(returnData);
-        console.log(returnData);
-        });
-    });
 
 
 
