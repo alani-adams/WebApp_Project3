@@ -138,6 +138,7 @@ function compute_winner(localChoice) {
 var userName=document.getElementById('userLabel').dataset.user;
 updateScore(userName,score);
 draw_images(localChoice,remoteChoice,score);
+// buttons are set to toggle so they are not on page at same time
 	$("#playAgainButton").toggle();
 	$("#rock").toggle();
 	$("#paper").toggle();
@@ -223,7 +224,6 @@ function setup() {
 }
 
 function reset() {
-	document.getElementById("playAgainButton").disabled = true;
 	$("#playAgainButton").toggle();
 	$("#rock").toggle();
 	$("#paper").toggle();
