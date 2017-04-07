@@ -155,6 +155,10 @@ session_start();
 		<center>
 			<a href="#">
 			<button id='playAgainButton' type='button' onclick="reset()">Play Again!</button>
+<script>
+// buttons toggle so is not on page with rock, paper, and scissor buttons
+$("#playAgainButton").toggle();
+</script>
 </a>
 		</center>	
 	</body>
@@ -169,7 +173,6 @@ session_start();
 </div>
 <script src='p3.js'></script>
 <script>
-document.getElementById("playAgainButton").disabled = true;
  //console.log("UserName: "+results['userName']+"<br/>");
  //console.log("Display Name: "+results['displayName']+"<br/>");
  //console.log("Win: "+results['win']+"<br/>");

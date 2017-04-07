@@ -9,7 +9,7 @@ function top10() {
 }//top10 function end
 
 function updateScore(user,gameResult) {
-if (gameResult=='win' || gameResult=='loss' || gameResult=='tie')
+if (gameResult=='win' || gameResult=='loss' || gameResult=='draw')
 	console.log("Score is Valid. Updating "+user+" with "+gameResult);
 else
 	console.log('Invalid input check '+ user+' and '+gameResult);
@@ -99,8 +99,9 @@ $(document).ready(function(){
 
 }); //end ready
 function compute_winner(localChoice) {
-  console.log("local Choise: "+localChoice);
+  console.log("local Choice: "+localChoice);
   var remote = Math.floor(Math.random()*(2-0+1)+0);
+  var score;
   if(remote == 0)
     remoteChoice = 'rock';
   else if(remote == 1)
@@ -108,31 +109,39 @@ function compute_winner(localChoice) {
   else
     remoteChoice = 'scissors';
   if(localChoice == 'rock') {
-		if(remoteChoice == 'rock')
-			draw_images(localChoice,remoteChoice,'draw');
-		else if(remoteChoice == 'paper')
-			draw_images(localChoice,remoteChoice,'lose');
-		else
-			draw_images(localChoice,remoteChoice,'win');
+	if(remoteChoice == 'rock')
+		score='draw';
+	else if(remoteChoice == 'paper')
+		score='loss';
+	else
+		score='win';
+  }
+  else if(localChoice == 'paper') {
+	if(remoteChoice == 'rock')
+		score='win';
+	else if(remoteChoice == 'paper')
+		score='draw';
+	else
+		score='loss';
 	}
-		else if(localChoice == 'paper') {
-			if(remoteChoice == 'rock')
-				draw_images(localChoice,remoteChoice,'win');
-			else if(remoteChoice == 'paper')
-				draw_images(localChoice,remoteChoice,'draw');
-			else
-				draw_images(localChoice,remoteChoice,'lose');
-			}
-		else {
-			if(remoteChoice == 'rock')
-				draw_images(localChoice,remoteChoice,'lose');
-			else if(remoteChoice == 'paper')
-				draw_images(localChoice,remoteChoice,'win');
-			else
-				draw_images(localChoice,remoteChoice,'draw');
-			}
 
-document.getElementById("playAgainButton").disabled = false;
+  else {
+	if(remoteChoice == 'rock')
+		score='loss';
+	else if(remoteChoice == 'paper')
+		score='win';
+	else
+		score='draw';
+	}
+// updated section to simplify code by saving as score as variable and having one
+// one function each to draw and update sql
+var userName=document.getElementById('userLabel').dataset.user;
+updateScore(userName,score);
+draw_images(localChoice,remoteChoice,score);
+	$("#playAgainButton").toggle();
+	$("#rock").toggle();
+	$("#paper").toggle();
+	$("#scissors").toggle();
 }
 
 function draw_images(localChoice, remoteChoice, result) {
@@ -196,7 +205,7 @@ function draw_image_winner(result){
 	base_image2.src = "img/draw.png";
 	if(result == 'win')
 		a_context.drawImage(base_image, 10, 100, 150, 150 * base_image.height / base_image.width);
-	else if(result == 'lose')
+	else if(result == 'loss')
 		a_context.drawImage(base_image, 350, 100, 150, 150 * base_image.height / base_image.width);
 	else
 		a_context.drawImage(base_image2, 280, 75, 150, 150 * base_image2.height / base_image2.width);
@@ -215,6 +224,10 @@ function setup() {
 
 function reset() {
 	document.getElementById("playAgainButton").disabled = true;
+	$("#playAgainButton").toggle();
+	$("#rock").toggle();
+	$("#paper").toggle();
+	$("#scissors").toggle();
 	var a_canvas = document.getElementById("a");
 	a_canvas.width = a_canvas.width;
 	setup();

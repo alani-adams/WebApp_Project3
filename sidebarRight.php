@@ -1,10 +1,11 @@
 <?php
 session_start();
-$user=$_SESSION['displayName'];
-$win=$_SESSION['loss'];
+$userDisplay=$_SESSION['displayName'];
+$userName=$_SESSION['userName'];
+$win=$_SESSION['win'];
 $loss=$_SESSION['loss'];
 //$user=echo "<script>results['userName'];</script>";
-echo "<label id='userLable' data-user=$user>User: $user</label>
+echo "<label id='userLabel' data-user=$userName>User: $userDisplay</label>
 <br/>
 <label id='winLable'>Win: $win</label>
 <br/>
