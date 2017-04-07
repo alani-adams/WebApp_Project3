@@ -137,6 +137,7 @@ function compute_winner(localChoice) {
 // one function each to draw and update sql
 var userName=document.getElementById('userLabel').dataset.user;
 updateScore(userName,score);
+top10();
 draw_images(localChoice,remoteChoice,score);
 // buttons are set to toggle so they are not on page at same time
 	$("#playAgainButton1").toggle();
