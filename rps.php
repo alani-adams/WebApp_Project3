@@ -13,7 +13,7 @@ session_start();
 		<script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
 -->
 
-<!--
+<!-- moved 
 		<script>
 			function compute_winner(var localChoice)
 			{
@@ -153,10 +153,9 @@ session_start();
 		</center>
 		<br/>	
 		<center>
-<!--
-			<a href="#" onclick="reset()">Play Again!</a>
--->
-			<button type='button' onclick="reset()">Play Again!</button>
+			<a href="#">
+			<button id='playAgainButton' type='button' onclick="reset()">Play Again!</button>
+</a>
 		</center>	
 	</body>
 
@@ -170,6 +169,7 @@ session_start();
 </div>
 <script src='p3.js'></script>
 <script>
+document.getElementById("playAgainButton").disabled = true;
  //console.log("UserName: "+results['userName']+"<br/>");
  //console.log("Display Name: "+results['displayName']+"<br/>");
  //console.log("Win: "+results['win']+"<br/>");
