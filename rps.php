@@ -7,8 +7,10 @@ session_start();
 </nav>
 </div>
 <div id='itemDisplay'>
+<!--
+<section onload="setup()" >
+-->
 <section>
-	<body onload="setup()" >
 		<center>
 			<h1>Play Rock, Paper, Scissors!</h1>
 		</center>
@@ -40,8 +42,6 @@ $("#playAgainButton2").toggle();
 $("#playAgainButton3").toggle();
 </script>
 	</center>	
-	</body>
-
 
 </section>
 </div>

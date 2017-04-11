@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<!-- 17S Web2 Brent Reeves keydown.html -->
+<Html>
+  <meta charset="utf-8">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+
+//    var conn = new WebSocket('ws://ec2-54-174-220-124.compute-1.amazonaws.com:8081');
+    var conn = new WebSocket('ws://www.gbush.pw:3500');
+    //var conn = new WebSocket('ws://localhost:8081');
+    conn.onopen = function(e) {
+      console.log("Connection established!");
+    };
+    
+    conn.onmessage = function(e) {
+      $("#receive").text( e.data + "\n" + $('#receive').val() );
+      console.log(e.data);
+    };
+
+    function send() {
+      console.log("send begin: " + $("#msg").val() );
+      conn.send( $("#msg").val() );
+      console.log("send end");
+    }
+    
+    function keydown(e) {
+      console.log("keydown: " + e.keyCode);
+      switch(e.which) {
+        case 13:
+          conn.send( $("#msg").val() );
+          $("#msg").val('');
+          break;
+        case 37:
+          conn.send("left");
+          break;
+        case 38:
+          conn.send("up");
+          break;
+        case 39:
+          conn.send("right");
+          break;
+        case 40:
+          conn.send("down");
+          break;
+        default:
+          $("#msg").text( $("#msg").val() + String.cromCharCode(e.which) );
+      }
+      e.preventDefault();
+      
+    }
+    window.addEventListener("keydown", keydown, false);
+    
+    $("#msg").submit(function (e) {
+      console.log('keypress...');
+      if (e.which == 13) {
+        e.preventDefault();
+        conn.send( $("#msg").val() );
+      }
+    });
+    </script>
+    
+  </head>
+  <body>
+    
+    <form>
+	<div>Message:</div> <input type="text" id="msg" size="80">
+    </form>
+    
+    <br />Receive:<br/>
+    <textarea id="receive" rows="10" cols = "80"></textarea>
+    
+  </body>
+</html>

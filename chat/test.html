@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<!-- 17S Web2 Brent Reeves keydown.html -->
+<Html>
+  <meta charset="utf-8">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+var conn = new WebSocket('wss://localhost:8080');
+conn.onopen = function(e) {
+    console.log("Connection established!");
+};
+
+conn.onmessage = function(e) {
+    console.log(e.data);
+};
+
+var conn = new WebSocket('wss://www.gbush.pw:3500');
+conn.onopen = function(e) {
+    console.log("Connection established!");
+};
+
+conn.onmessage = function(e) {
+    console.log(e.data);
+};
+</script>
+    
+  </head>
+  <body>
+
+    <form>
+        <div>Message:</div> <input type="text" id="msg" size="80">
+    </form>
+
+    <br />Receive:<br/>
+    <textarea id="receive" rows="10" cols = "80"></textarea>
+
+  </body>
+</html>

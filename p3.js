@@ -4,14 +4,12 @@ function top10() {
     $.post("./db/top10.php",{},
     function(returnData) {
 	$("#topList").html(returnData);
-        console.log(returnData);
+        //console.log(returnData);
         });
 }//top10 function end
 
 function updateScore(user,gameResult) {
-if (gameResult=='win' || gameResult=='loss' || gameResult=='draw')
-	console.log("Score is Valid. Updating "+user+" with "+gameResult);
-else
+if (! (gameResult=='win' || gameResult=='loss' || gameResult=='draw') )
 	console.log('Invalid input check '+ user+' and '+gameResult);
 	
 $.post("./db/updateScore.php",
@@ -20,9 +18,9 @@ $.post("./db/updateScore.php",
           score: gameResult
       },
       function(postReturn){
-console.log('updateScore return');
+//console.log('updateScore return');
 	if (postReturn==0) {
-         console.log("returned no results");
+         console.log("Update Score Function returned no results");
     	}
 else {
     results=JSON.parse(postReturn);
@@ -31,8 +29,8 @@ else {
     $('#winLable').html("Win: "+results['win']);
     $('#lossLable').html("Loss: "+results['loss']);
     //console.log("Loss: "+results['loss']);
-    console.log("Win: "+results['win']);
-    console.log("Loss: "+results['loss']);
+    //console.log("Win: "+results['win']);
+    //console.log("Loss: "+results['loss']);
       }//end else
 	}//end postreturn function
 	);//jquerry end
@@ -41,7 +39,7 @@ else {
 function checkPwd() {
     var user=document.getElementById('username').value;
     var pwd=document.getElementById('password').value;
-      console.log("submitting "+user+" and "+pwd);
+      //console.log("submitting "+user+" and "+pwd);
     $.post("./db/checkUser.php",
       {
           userName: user ,
@@ -49,7 +47,7 @@ function checkPwd() {
       },
       function(postReturn){
      if (postReturn==0) {
-         console.log("returned no results");
+         console.log("Check Password returned no results");
     $("#feedback").html("Password/Username not valid.");
     }
 else {
@@ -67,7 +65,7 @@ else {
          //console.log("Win: "+results['win']+"<br/>");
         // console.log("Loss: "+results['loss']+"<br/>");
       $('main').load("rps.php"); 
-         console.log("post rps.php load");
+         //console.log("post rps.php load");
       }
     else {
 
@@ -87,7 +85,6 @@ $(document).ready(function(){
   });
 
   $("#logout").click(function(){
-    console.log("Logout run");
     $.post("./db/logout.php",{},function(){
     $('main').load("./db/logout.php"); 
          console.log("Logout ran");
@@ -99,7 +96,7 @@ $(document).ready(function(){
 
 }); //end ready
 function compute_winner(localChoice) {
-  console.log("local Choice: "+localChoice);
+  //console.log("local Choice: "+localChoice);
   var remote = Math.floor(Math.random()*(2-0+1)+0);
   var score;
   if(remote == 0)
@@ -216,17 +213,27 @@ function draw_image_winner(result){
 }
 
 function setup() {
+	console.log('Setup Function');
 	var a_canvas = document.getElementById("a");
    	var a_context = a_canvas.getContext("2d");
    	var base_image = new Image();
 	base_image.src = "img/boom.png";
-	var base_image1 = new Image();
-	base_image1.src = "img/boom.png";
-	a_context.drawImage(base_image1, 10, 50, 350, 350 * base_image1.height / base_image1.width);
+base_image.onload = function() {
+console.log ('Boom triggered');
+	a_context.drawImage(base_image, 10, 50, 350, 350 * base_image.height / base_image.width);
 	a_context.drawImage(base_image, 350, 50, 350, 350 * base_image.height / base_image.width);
+  
+if (1) {
+// use if we want to remove boom after a timed delay 
+//a_context.clearRect(0, 0, 750, 450);
+}
+
+}
+	//a_context.drawImage(base_image1, 10, 50, 350, 350 * base_image1.height / base_image1.width);
 }
 
 function reset() {
+	console.log('Reset Function');
 	$("#playAgainButton1").toggle();
 	$("#playAgainButton2").toggle();
 	$("#playAgainButton3").toggle();
