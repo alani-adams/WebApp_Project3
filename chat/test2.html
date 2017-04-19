@@ -7,9 +7,8 @@
     <script>
 
 //    var conn = new WebSocket('ws://ec2-54-174-220-124.compute-1.amazonaws.com:8081');
-    //var conn = new WebSocket('ws://aws1.gbush.pw:22000');
+//    var conn = new WebSocket('ws://localhost:22000');
     var conn = new WebSocket('ws://aws1.gbush.pw:22000');
-    //var conn = new WebSocket('ws://localhost:8081');
     conn.onopen = function(e) {
       console.log("Connection established!");
     };
@@ -24,7 +23,6 @@
       conn.send( $("#msg").val() );
       console.log("send end");
     }
-    
     function keydown(e) {
       console.log("keydown: " + e.keyCode);
       switch(e.which) {
@@ -63,13 +61,15 @@
     
   </head>
   <body>
-    
+
     <form>
-	<div>Message:</div> <input type="text" id="msg" size="80">
+        <div>Message:</div> <input type="text" id="msg" size="80">
     </form>
-    
+
     <br />Receive:<br/>
     <textarea id="receive" rows="10" cols = "80"></textarea>
-    
+
   </body>
 </html>
+
+

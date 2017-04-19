@@ -1,5 +1,42 @@
 //basic format for jquery inputs, and event methods from w3schools
 
+// setup Connection
+
+// Check for existing connections
+    if ( ! conn) {
+    console.log("Need Connection");
+    var conn = new WebSocket('ws://aws1.gbush.pw:22000');
+    }
+// Run action with new connection
+    conn.onopen = function(e) {
+      console.log("Connection established!");
+    };
+
+    conn.onmessage = function(e) {
+if (/Welcome - your id is.*/.test(e.data)) {
+chatId=findChatId(e.data);
+console.log("New Connection. My ID is " + chatId);
+}
+else {
+      console.log(e.data);
+}
+    };
+
+function findChatId(str) {
+    //var str = "Welcome - your id is 221."; 
+    var n = str.search(/[0-9]/i);
+    str=str.slice(n);
+    n = str.search(/![0-9]/i);
+    str = str.slice(0,n);
+    return str;
+}
+
+function send(testMsg) {
+      conn.send(testMsg);
+      console.log("Sent: " + testMsg);
+    }
+
+
 function top10() {
     $.post("./db/top10.php",{},
     function(returnData) {
@@ -89,14 +126,13 @@ $(document).ready(function(){
     $('main').load("./db/logout.php"); 
          console.log("Logout ran");
       });
-});
-
-
-
+  });//end jQuery function
 
 }); //end ready
+
 function compute_winner(localChoice) {
   //console.log("local Choice: "+localChoice);
+  send(localChoice);
   var remote = Math.floor(Math.random()*(2-0+1)+0);
   var score;
   if(remote == 0)
@@ -242,5 +278,6 @@ function reset() {
 	$("#scissors").toggle();
 	var a_canvas = document.getElementById("a");
 	a_canvas.width = a_canvas.width;
+	send("Reset");
 	setup();
 }
