@@ -63,8 +63,9 @@ float:center;
   }
 
 header {
-  color: #ce2c04;
+  color: #fff;
   font-family: 'Poller One', cursive;
+  background-color: #ce2c04;
 }
 
 body {
