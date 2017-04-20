@@ -1,3 +1,8 @@
+// global variables
+var userName
+var gameState
+
+
 //basic format for jquery inputs, and event methods from w3schools
 
 // setup Connection
