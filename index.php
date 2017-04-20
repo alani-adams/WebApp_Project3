@@ -14,7 +14,7 @@
                 content='glb14e,cab13e,alp13d'/>
         <META name='major'
                 content='Information Technology'/>
-
+<link href="https://fonts.googleapis.com/css?family=Poller+One" rel="stylesheet">
 <!--Install Genric Required CSS,Jquery,JqueryUI,and bootsrap librarys from  -->
 <?php include_once './cdn/cdn.php'; ?>
 
