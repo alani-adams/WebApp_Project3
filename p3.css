@@ -11,6 +11,10 @@ border: 1px solid white;
 font-size: 22px;
 }
 
+header {
+  font-weight: bold; 
+  font-size: 250%;
+ }
 
 #logout {
 margin-left: 5%;
@@ -61,8 +65,7 @@ float:center;
 head {
   color: #fff;
   font-family: 'Poller One', cursive;
-  background-color: #ce2c04;
-  font-size: 300%;
+  background-color: #ce2c04
 }
 
 body {
