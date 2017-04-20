@@ -255,7 +255,7 @@ function setup() {
    	var base_image = new Image();
 	base_image.src = "img/boom.png";
 base_image.onload = function() {
-console.log ('Boom triggered');
+  console.log ('Boom triggered');
 	a_context.drawImage(base_image, 10, 50, 350, 350 * base_image.height / base_image.width);
 	a_context.drawImage(base_image, 350, 50, 350, 350 * base_image.height / base_image.width);
   

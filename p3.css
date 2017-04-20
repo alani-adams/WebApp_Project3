@@ -21,7 +21,7 @@ margin-left: 5%;
 }
 
 #login {
-float:left;
+float:center;
 }
 
 .good {
@@ -64,7 +64,7 @@ float:left;
 
 body {
   color: #fff;
-  font-family: 'Oswald', 'Futura', sans-serif;
+  font-family: 'Poller One', cursive;
   background-color: #403c3b;
   margin: 0 auto 0 auto;}
   /* Responsive page rules at bottom of style sheet */
