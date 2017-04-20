@@ -62,9 +62,14 @@ float:center;
   border-radius: 25px;
   }
 
+header {
+  color: #ce2c04;
+  font-family: 'Poller One', cursive;
+}
+
 body {
   color: #fff;
-  font-family: 'Poller One', cursive;
+  font-family: 'Oswald', 'Futura', sans-serif;
   background-color: #403c3b;
   margin: 0 auto 0 auto;}
   /* Responsive page rules at bottom of style sheet */
@@ -115,6 +120,10 @@ body {
   text-shadow: 2px 2px 1px #333;
 }
 
+footer {
+  color: #ce2c04;
+  font-family: 'Poller One', cursive;
+}
 
 /* Form styles */
 
