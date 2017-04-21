@@ -24,12 +24,20 @@ session_start();
 <hr/>
 </nav>
 <MAIN id='main'>
-<button type='button' onclick="updateScore('test3','win')"> Update Win</button>
-<br/>
-<button type='button' onclick="updateScore('test3','loss')"> Update Loss</button>
-<br/>
-<button type='button' onclick="updateScore('test3','tie')"> Update Tie</button>
-<br/>
+<script>
+data="111: paper";
+if (/[0-9]+: .*/.test(data)) {
+
+function removeChatId(str) {
+n=str.search(/[^0-9: ]/i);
+str=str.slice(n);
+return str;
+}
+
+else {
+console.log("no match");
+}
+</script>
 <div id='testing'></div>
 <div id='sidebarRight'>
 <section>

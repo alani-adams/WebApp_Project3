@@ -1,6 +1,16 @@
 // global variables
-var userName
-var gameState
+var remoteUser,userName;
+var remoteChoice=null;
+var localChoice=null;
+rockImage=document.getElementById("rock");
+paperImage=document.getElementById("paper");
+scissorsImage=document.getElementById("scissors");
+winnerImage = new Image();
+winnerImage.src = "img/winner.png";
+drawImage = new Image();
+drawImage.src = "img/draw.png";
+var boomImage = new Image();
+boomImage.src = "img/boom.png";
 
 
 //basic format for jquery inputs, and event methods from w3schools
@@ -22,6 +32,16 @@ if (/Welcome - your id is.*/.test(e.data)) {
 chatId=findChatId(e.data);
 console.log("New Connection. My ID is " + chatId);
 }
+else if (/[0-9]+: .*/.test(e.data)) {
+var testId=findChatId(e.data);
+
+var testMessage=removeChatId(e.data);
+  if (testMessage=="rock" || testMessage=="paper" || testMessage=="scissors") {
+  remoteChoice=testMessage;
+  console.log(remoteChoice + " was detected.")
+  checkBoth();
+  }
+}
 else {
       console.log(e.data);
 }
@@ -34,6 +54,12 @@ function findChatId(str) {
     n = str.search(/![0-9]/i);
     str = str.slice(0,n);
     return str;
+}
+
+function removeChatId(str) {
+n=str.search(/[^0-9: ]/i);
+str=str.slice(n);
+return str;
 }
 
 function send(testMsg) {
@@ -118,7 +144,13 @@ else {
 } //end checkPwd
 
 $(document).ready(function(){
+
+//username=document.getElementById('userLabel').dataset.user;
  console.log('document Ready');
+// console.log(userName);
+
+
+
  $("#loginButton").off('click');
 
   $("#loginButton").click(function(){
@@ -135,17 +167,33 @@ $(document).ready(function(){
 
 }); //end ready
 
-function compute_winner(localChoice) {
+function checkRemote(passed){
+localChoice = passed;
+send(localChoice);
+// buttons are set to toggle so they are not on page at same time
+	$("#waiting1").toggle();
+	$("#waiting2").toggle();
+	$("#waiting3").toggle();
+	$("#rock").toggle();
+	$("#paper").toggle();
+	$("#scissors").toggle();
+if(remoteChoice){
+compute_winner();
+}
+}
+
+function checkBoth(){
+if(remoteChoice && localChoice){
+compute_winner();
+}
+}
+
+function compute_winner() {
   //console.log("local Choice: "+localChoice);
-  send(localChoice);
-  var remote = Math.floor(Math.random()*(2-0+1)+0);
+  //send(localChoice);
+ // var remote = Math.floor(Math.random()*(2-0+1)+0);
   var score;
-  if(remote == 0)
-    remoteChoice = 'rock';
-  else if(remote == 1)
-      remoteChoice = 'paper';
-  else
-    remoteChoice = 'scissors';
+
   if(localChoice == 'rock') {
 	if(remoteChoice == 'rock')
 		score='draw';
@@ -177,13 +225,14 @@ var userName=document.getElementById('userLabel').dataset.user;
 updateScore(userName,score);
 top10();
 draw_images(localChoice,remoteChoice,score);
-// buttons are set to toggle so they are not on page at same time
-	$("#playAgainButton1").toggle();
-	$("#playAgainButton2").toggle();
-	$("#playAgainButton3").toggle();
-	$("#rock").toggle();
-	$("#paper").toggle();
-	$("#scissors").toggle();
+        $("#waiting1").toggle();
+        $("#waiting2").toggle();
+        $("#waiting3").toggle();
+        $("#playAgainButton1").toggle();
+        $("#playAgainButton2").toggle();
+        $("#playAgainButton3").toggle();
+localChoice=null;
+remoteChoice=null;
 }
 
 function draw_images(localChoice, remoteChoice, result) {
@@ -257,19 +306,23 @@ function setup() {
 	console.log('Setup Function');
 	var a_canvas = document.getElementById("a");
    	var a_context = a_canvas.getContext("2d");
-   	var base_image = new Image();
-	base_image.src = "img/boom.png";
-base_image.onload = function() {
-  console.log ('Boom triggered');
-	a_context.drawImage(base_image, 10, 50, 350, 350 * base_image.height / base_image.width);
-	a_context.drawImage(base_image, 350, 50, 350, 350 * base_image.height / base_image.width);
+   	//var base_image = boomImage;
+   	//var base_image = new Image();
+	//base_image.src = "img/boom.png";
+//base_image.onload = function() {
+//boomImage.onload = function() {
+console.log ('Boom triggered');
+	a_context.drawImage(boomImage, 10, 50, 350, 350 * boomImage.height / boomImage.width);
+	//a_context.drawImage(base_image, 10, 50, 350, 350 * base_image.height / base_image.width);
+	a_context.drawImage(boomImage, 350, 50, 350, 350 * boomImage.height / boomImage.width);
+	//a_context.drawImage(base_image, 350, 50, 350, 350 * base_image.height / base_image.width);
   
 if (1) {
 // use if we want to remove boom after a timed delay 
 //a_context.clearRect(0, 0, 750, 450);
 }
 
-}
+//} from onload
 	//a_context.drawImage(base_image1, 10, 50, 350, 350 * base_image1.height / base_image1.width);
 }
 
