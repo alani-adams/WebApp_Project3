@@ -3,7 +3,7 @@ session_start();
 //echo "checkUser script";
 $userName=$_POST['userName'];
 $pwd=$_POST['password'];
-include '/var/www/html/php/p3dbConnect.php';
+include '../../php/p3dbConnect.php';
 $conn=makeConnect();
 //DB transactions begins 
 $stmt = $conn->prepare("SELECT * FROM p3.user WHERE userName=:username;");

@@ -6,7 +6,7 @@ $score=$_POST['score'];
 //$score='win';
 //$score='loss';
 //$score='draw';
-include '/var/www/html/php/p3dbConnect.php';
+include '../../php/p3dbConnect.php';
 $conn=makeConnect();
 //DB transactions begins 
 if ($score=='win'){
