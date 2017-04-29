@@ -210,12 +210,12 @@ $(document).ready(function(){
 
 
  $("#loginButton").off('click');
-
   $("#loginButton").click(function(){
     console.log('login button clicked');
     checkPwd();
   });
 
+ $("#logout").off('click');
   $("#logout").click(function(){
     $.post("./db/logout.php",{},function(){
     $('main').load("./db/logout.php"); 
