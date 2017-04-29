@@ -1,7 +1,7 @@
 <?php
 session_start();
 //echo "checkUser script";
-include '/var/www/html/php/p3dbConnect.php';
+include '../../php/p3dbConnect.php';
 $conn=makeConnect();
 //DB transactions begins 
 $stmt = $conn->prepare("SELECT * FROM p3.user order by win desc limit 10;");
