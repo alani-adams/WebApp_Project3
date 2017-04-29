@@ -1,0 +1,5 @@
+{
+  "require" : {
+    "facebook/graph-sdk" : "~4.0"
+  }
+}

@@ -57,6 +57,9 @@ console.log("no match");
 </footer>
 
 <script src='p3.js'></script>
+<script>
+checkFb('1264024106986118');
+</script>
 <?php
 if ($authenticated && $userName) {
 echo "<script>console.log($authenticated);</script>"; 

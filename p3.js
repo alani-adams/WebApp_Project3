@@ -143,6 +143,44 @@ else {
     ); //jquery post end
 } //end checkPwd
 
+function checkFb(fbId) {
+console.log("Facebook Check "+fbId);
+    $.post("./db/checkFb.php",
+      {
+          facebookID: fbId
+      },
+      function(postReturn){
+	console.log(postReturn);
+     if (postReturn==0) {
+         console.log("Check Password returned no results");
+    $("#feedback2").html("Facebook Login/ID not valid.");
+    }
+else {
+    results=JSON.parse(postReturn);
+    $("#feedback").html("");
+    //results=postReturn;
+    //document.writeln(results);
+    //console.log(results);
+    //console.log(results['userName']);
+
+    var node=document.getElementById('authenticated');
+    if (results['userName']) {
+        // console.log("UserName: "+results['userName']+"<br/>");
+         //console.log("Display Name: "+results['displayName']+"<br/>");
+         //console.log("Win: "+results['win']+"<br/>");
+        // console.log("Loss: "+results['loss']+"<br/>");
+      $('main').load("rps.php");
+         //console.log("post rps.php load");
+      }
+    else {
+
+        }
+
+}}
+    ); //jquery post end
+} //end Fuction: checkFb
+
+
 $(document).ready(function(){
 
 //username=document.getElementById('userLabel').dataset.user;
