@@ -58,3 +58,4 @@ setup();
 </section>
 </div>
 <script src='p3.js'></script>
+<script>makeChat();</script>

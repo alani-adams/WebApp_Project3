@@ -2,6 +2,8 @@
 var remoteUser,userName;
 var remoteChoice=null;
 var localChoice=null;
+var chatId=null;
+var conn=null;
 rockImage=document.getElementById("rock");
 paperImage=document.getElementById("paper");
 scissorsImage=document.getElementById("scissors");
@@ -18,41 +20,57 @@ boomImage.src = "img/boom.png";
 // setup Connection
 
 // Check for existing connections
+function makeChat() {
     if ( ! conn) {
-    console.log("Need Connection");
-    var conn = new WebSocket('ws://aws1.gbush.pw:22000');
-    }
+    //console.log("Need Connection");
+// Websocket Config for PHP script which must be started manually every time
+    //var conn = new WebSocket('ws://aws1.gbush.pw:22000');
+  conn = new WebSocket('ws://aws1.gbush.pw:8080/examples/websocket/chat');
+  messageListen();
+  }
 // Run action with new connection
-    conn.onopen = function(e) {
-      console.log("Connection established!");
-    };
-
-    conn.onmessage = function(e) {
-if (/Welcome - your id is.*/.test(e.data)) {
-chatId=findChatId(e.data);
-console.log("New Connection. My ID is " + chatId);
 }
-else if (/[0-9]+: .*/.test(e.data)) {
-var testId=findChatId(e.data);
 
-var testMessage=removeChatId(e.data);
-  if (testMessage=="rock" || testMessage=="paper" || testMessage=="scissors") {
-  remoteChoice=testMessage;
+function messageListen() {
+  conn.onmessage = function(e) {
+  msg=e.data;
+  //console.log('Message is: '+msg);
+  userName=document.getElementById('userLabel').dataset.user;
+  console.log(userName);
+
+  if (RegExp(userName).test(msg)) { 
+    console.log("Me: "+msg);
+  }
+  else if (/rock/i.test(msg)) {
+    remoteChoice="rock";
+    console.log(remoteChoice + " was detected.")
+    checkBoth();
+  }
+else if (/paper/i.test(msg)) {
+  remoteChoice="paper";
   console.log(remoteChoice + " was detected.")
   checkBoth();
-  }
+}
+else if (/scissors/i.test(msg)) {
+  remoteChoice="scissors";
+  console.log(remoteChoice + " was detected.")
+  checkBoth();
 }
 else {
-      console.log(e.data);
+  console.log("Else: " + msg);
 }
     };
+} // end listener
+
 
 function findChatId(str) {
     //var str = "Welcome - your id is 221."; 
-    var n = str.search(/[0-9]/i);
+    //var str = "* Guest3 has joined."
+    var n = str.search(/Guest[0-9]+.*/i);
     str=str.slice(n);
-    n = str.search(/![0-9]/i);
+    n = str.search(/[^(Guest)[0-9]+/i);
     str = str.slice(0,n);
+    //console.log('ChatID: '+str);
     return str;
 }
 
@@ -63,6 +81,8 @@ return str;
 }
 
 function send(testMsg) {
+var userName=document.getElementById('userLabel').dataset.user;
+  testMsg=userName+" "+testMsg;
       conn.send(testMsg);
       console.log("Sent: " + testMsg);
     }
