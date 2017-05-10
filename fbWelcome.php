@@ -19,8 +19,7 @@ use Facebook\HttpClients\FacebookHttpable;
 //for app IT325
 FacebookSession::setDefaultApplication( '653849638149328','500dac66a2b2573426fb31f8b97fce5d' );
 
-    $helper = new FacebookRedirectLoginHelper('http://aws1.gbush.pw/p3/index.php' );
-    $helper2 = new FacebookRedirectLoginHelper('http://aws1.gbush.pw/p3/fbReg.php' );
+    $helper = new FacebookRedirectLoginHelper('http://aws1.gbush.pw/p3/fbReg.php' );
 
 try {
   $session = $helper->getSessionFromRedirect();
@@ -37,19 +36,22 @@ if ($session) {
   $request = new FacebookRequest( $session, 'GET', '/me?fields=id' );
   $response = $request->execute();
   $graphObject = $response->getGraphObject();
-$fbId=$graphObject->getProperty('id');
+  $fbId=$graphObject->getProperty('id');
+  $_SESSION['fbId']=$fbId;
 echo "<script src='p3.js'></script>";
 echo "<script>";
-echo "checkFb($fbId);";
+//echo "checkFb($fbId);";
 echo "</script>";
+//echo "Facebook found";
 }
-
-if ($session2) {
-  $request = new FacebookRequest( $session, 'GET', '/me?fields=id' );
-  $response = $request->execute();
-  $graphObject = $response->getGraphObject();
-  $fbId=$graphObject->getProperty('id');
-
+else {
+//echo "Facebook not found";
+}
+if ($_SESSION['fbId']) {
+//echo $_SESSION['fbId'];
+}
+else {
+echo "<script>window.location.replace(\"index.php\");</script>";
 }
 echo "<form id='loginForm' name='login' method='POST'>";
 echo "<br/><br/>";
@@ -61,29 +63,28 @@ echo "<section class='center'>
 <div id='feedback'></div>
 ";
 echo "<br/><br/>
-	<button type='button' id='loginButton'>Login</button>
+        <button type='button' id='loginButton'>Register</button>
 <br/><br/>";
 echo"  </section>
 <section id='loginStatus'>
 </section>";
 echo"</FORM>
 <section class='center'>
-<form id='loginForm2' name='login2' method='POST'>
-<label>Facebook Login</label>
-";
-echo '<a href="' . $helper->getLoginUrl() . '">';
-echo "<img src='img/fbLogin2.png' />";
-echo "</a>";
+<form id='loginForm2' name='login2' method='POST'>";
 echo "<br/><br/>";
-//echo"<label>Register Facebook</label>";
-//echo '<a href="' . $helper2->getLoginUrl() . '">';
-//echo "<img src='img/fbLogin2.png' />";
-//echo "</a>";
-//echo "<br/><br/>";
+echo "<label for='username'>Username: </label>";
+echo "
+<input type='text' id='username' value='test1'/>
+        <label for='password'>Password: </label>
+        <input type='password' id='password' class='badBack' value='abc123' />
+	<br/><br/>
+        <button type='button' id='loginButton'>Register</button>
+";
+echo "<br/><br/>";
+echo "<section id='loginStatus2'></section>";
 echo "<div id='feedback2'></div>";
 echo "<br/><br/>";
 echo "</section></FORM>";
-
 ?>
 <script src='p3.js'></script>
 

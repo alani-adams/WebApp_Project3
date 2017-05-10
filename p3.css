@@ -52,15 +52,19 @@ float:center;
 
 #loginForm,#loginForm2 {
   text-align: center;
+  color: black;
   grid-column:2;
   width: 50%;
   border: 2px solid gray;
-  background-color: #000;
+  background-color: #717172;
   font-family: 'Oswald', 'Futura', sans-serif;
   margin: 0; 
   padding: 0;
   border-radius: 25px;
   }
+#loginForm2 {
+  width: 85%;
+}
 
 head {
   color: #fff;
@@ -75,7 +79,7 @@ body {
   margin: 0 auto 0 auto;}
   /* Responsive page rules at bottom of style sheet */
 
-#loginForm>h1 {
+#loginForm>h1,#loginForm2>h1 {
   background-repeat: no-repeat;
   background-position: center center;
   text-align: center;
@@ -87,7 +91,7 @@ body {
   padding: 30px 10px 20px 10px;}
 
 #loginForm>h2 {
-  color: #fff;
+  color: black;
   font-size: 24px;
   font-weight: normal;
   text-align: center;
@@ -132,7 +136,7 @@ form {
   padding: 0 60px 65px 60px;}
 
 form label {
-  color: #fff;
+  color: black;
   text-align: left;
   display: block;
   margin: 10px 0 10px 50px;
@@ -207,43 +211,6 @@ select, option {
   font-size: 16px;}
 
 /* Click event example - note style */
-#note {
-  color: #fff;
-  background-color: #000;
-  opacity: 0.9;
-  box-shadow: -3px 3px 6px #000;
-  padding: 1em 1em 2em 1em;
-  height: 95%;
-  width: 95%;
-  position: absolute;
-  top: 1em;
-  left: 0;}
-
-#note .header + div {
-  background: rgb(255, 255, 255);
-  background: rgba(255, 255, 255, 1);
-  position: relative;
-  text-align: center;
-  top: 1px;
-  color: #d7666b;
-  padding: 20px;
-  margin: 30px;
-  border: 1px solid #d7666b;}
-
-#note h2 {
-  color: #d7666b;
-  padding-top: 20px;
-  padding-bottom: 20px;}
-
-#note a {
-  text-decoration: none;
-  color: #fff;}
-
-#note .header {
-  text-align: right;
-  background-color: #000;
-  border: none;
-  padding: 0 0 0 10px;}
 
 .shown {
   visibility: visible;}
@@ -305,6 +272,7 @@ div.button {
 a[data-state='stop'] {background-image: url('img/pause.png');}
 a[data-state='record'] {background-image: url('img/record.png');}
 button {
+  color: black;
   height: 50px;
   width: 100px;
   margin: 0 auto;

@@ -7,7 +7,11 @@ $loss=$_SESSION['loss'];
 //echo "<script> var userName="+$userName+"; </script>";
 //$user=echo "<script>results['userName'];</script>";
 ?>
-<label id='userLabel' data-user = '<?php echo $userName;?>'>User:<?php echo $userDisplay; ?> <br/>UserName: <?php echo $userName;?> <br/></label>
+<label id='userLabel' data-user = '<?php echo $userName;?>' 
+data-win='<?php echo $win;?>'
+data-loss='<?php echo $loss;?>'
+>
+User:<?php echo $userDisplay; ?> <br/>UserName: <?php echo $userName;?> <br/></label>
 <br/>
 <label id='winLable'>Win: <?php echo $win ?></label>
 <br/>

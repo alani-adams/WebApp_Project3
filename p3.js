@@ -112,10 +112,15 @@ $.post("./db/updateScore.php",
     	}
 else {
     results=JSON.parse(postReturn);
+    node=document.getElementById('userLabel');
     //results=postReturn;
     //console.log(results);
+    check_awards(results['win'],results['loss']);
     $('#winLable').html("Win: "+results['win']);
     $('#lossLable').html("Loss: "+results['loss']);
+    node.dataset.win=results['win'];
+    node.dataset.loss=results['loss'];
+
     //console.log("Loss: "+results['loss']);
     //console.log("Win: "+results['win']);
     //console.log("Loss: "+results['loss']);
@@ -397,3 +402,120 @@ function reset() {
 	send("Reset");
 	setup();
 }
+
+function check_awards(win,loss) {
+var msg=null;
+var msg1=null;
+var msg2=null;
+var node=document.getElementById('userLabel');
+var oldWin=node.dataset.win;
+var oldLoss=node.dataset.loss;
+console.log("Win: "+ win + " Old Win: " + oldWin+ " Loss: " + loss + " Old Loss: " +oldLoss);
+
+//cover win sum if tie
+if (win-oldWin == 0.5) {
+if (win == 50 ) {
+  msg1="Reached 50th win.";
+  }
+else if (win==25) {
+  msg1="Reached 25th win.";
+  }
+else if (win==5) {
+  msg1="Reached 5th win.";
+  }
+else if (win==0.5) {
+  msg1="Reached 1st win.";
+  }
+else {
+  msg1=null;
+  }
+}
+
+//check win sum if regular win
+else if (win-oldWin == 1.0) {
+if (win == 50 || win == 50.5 ) {
+  msg1="Reached 50th win.";
+  }
+else if (win==25 || win==25.5) {
+  msg1="Reached 25th win.";
+  }
+else if (win==5 || win==5.5) {
+  msg1="Reached 5th win.";
+  }
+else if (win==1.0) {
+  msg1="Reached 1st win.";
+  }
+else {
+  msg1=null;
+  }
+}
+
+//check loss sum
+else if (loss-oldLoss== 1) {
+if (loss == 50) {
+  msg1="Reached 50th loss."
+  }
+else if (loss==25) {
+  msg1="Reached 25th loss."
+  }
+else if (loss==5) {
+  msg1="Reached 5th loss."
+  }
+else if (loss==1) {
+  msg1="Reached 1st loss."
+  }
+else {
+  msg1=null;
+  }
+}
+
+//check game sum
+if (win-oldWin==0.5) {
+console.log("Game sum tie checks.");
+console.log(win+loss);
+if (win+loss==1000.0) {
+  msg2="Reached 1000th game.";
+  }
+else if (win+loss==500.0) {
+  msg2="Reached 500th game.";
+  }
+else if (win+loss==100.0) {
+  //msg2="Reached 100th game.";
+  console.log("100th game!");
+  }
+else {
+  msg2=null;
+}
+}
+else {
+if (win+loss==1000.0 || win+loss==1000.5) {
+  msg2="Reached 1000th game.";
+  }
+else if (win+loss==500.0 || win+loss==500.5) {
+  msg2="Reached 500th game.";
+  }
+else if (win+loss==100.0 || win+loss==100.5) {
+  msg2="Reached 100th game.";
+  }
+else {
+  msg2=null;
+  }
+}
+
+//format message
+if (msg1!=null && msg2!=null) {
+  msg=msg1+"\n"+msg2;
+  }
+else if (msg1!=null) {
+  msg=msg1;
+  }
+else if (msg2!=null) {
+  msg=msg2;
+  }
+else {
+  msg=null;
+}
+if (msg!=null) {
+window.alert(msg);
+}
+}// end function

@@ -42,7 +42,7 @@ $authenticated=$_SESSION['authenticated'];
 <hr/>
 </nav>
 <MAIN id='main'>
-<?php include_once "welcome.php" ?>
+<?php include_once "fbWelcome.php" ?>
 </MAIN>
 <br/>
 <hr/>

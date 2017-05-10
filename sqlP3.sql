@@ -27,4 +27,4 @@ insert into p3.user (userName,displayName,hash,win,loss) values ('test8','Test U
 insert into p3.user (userName,displayName,hash,win,loss) values ('test9','Test User #9','$2y$10$nosBhRA2Cl41OZh/lTzEU.jnjd.ZLfJHaNbaZ9p8Wr5Vt2vE0NaDu','9','1');
 insert into p3.user (userName,displayName,hash,win,loss) values ('test10','Test User #10','$2y$10$nosBhRA2Cl41OZh/lTzEU.jnjd.ZLfJHaNbaZ9p8Wr5Vt2vE0NaDu','10','1');
 insert into p3.user (userName,displayName,hash,win,loss) values ('test11','Test User #11','$2y$10$nosBhRA2Cl41OZh/lTzEU.jnjd.ZLfJHaNbaZ9p8Wr5Vt2vE0NaDu','10.5','1');
-insert into p3.user (userName,displayName,hash,win,loss,facebookID) values ('glb14e','George Bush','$2y$10$nosBhRA2Cl41OZh/lTzEU.jnjd.ZLfJHaNbaZ9p8Wr5Vt2vE0NaDu','0','0','1262895470432315');
+insert into p3.user (userName,displayName,hash,win,loss,facebookID) values ('glb14e','George Bush','$2y$10$nosBhRA2Cl41OZh/lTzEU.jnjd.ZLfJHaNbaZ9p8Wr5Vt2vE0NaDu','0','0','1264024106986118');
