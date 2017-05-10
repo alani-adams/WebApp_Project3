@@ -470,17 +470,18 @@ else {
 }
 
 //check game sum
+var sum=parseFloat(win)+parseFloat(loss);
 if (win-oldWin==0.5) {
 console.log("Game sum tie checks.");
-console.log(win+loss);
-if (win+loss==1000.0) {
+console.log(sum);
+if (sum==1000.0) {
   msg2="Reached 1000th game.";
   }
-else if (win+loss==500.0) {
+else if (sum==500.0) {
   msg2="Reached 500th game.";
   }
-else if (win+loss==100.0) {
-  //msg2="Reached 100th game.";
+else if (sum==100.0) {
+  msg2="Reached 100th game.";
   console.log("100th game!");
   }
 else {
@@ -488,13 +489,13 @@ else {
 }
 }
 else {
-if (win+loss==1000.0 || win+loss==1000.5) {
+if (sum==1000.0 || sum==1000.5) {
   msg2="Reached 1000th game.";
   }
-else if (win+loss==500.0 || win+loss==500.5) {
+else if (sum==500.0 || sum==500.5) {
   msg2="Reached 500th game.";
   }
-else if (win+loss==100.0 || win+loss==100.5) {
+else if (sum==100.0 || sum==100.5) {
   msg2="Reached 100th game.";
   }
 else {
@@ -518,4 +519,18 @@ else {
 if (msg!=null) {
 window.alert(msg);
 }
+}// end function
+
+function draw_award() {
+    node=document.getElementById('userLabel');
+    win=parseFloat(node.dataset.win);
+    loss=parseInt(node.dataset.loss);
+    var award=new Image();  
+var sum=parseFloat(win)+parseFloat(loss);
+//draw winAwards
+  node=document.getElementById('winAward');
+  node.innerHTML="";
+  if (win >= 50) {
+
+  }
 }// end function

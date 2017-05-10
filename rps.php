@@ -35,11 +35,14 @@ session_start();
 -->
 		</center>
 		<br/>	
-		<center>
-			<a href="#">
-			</a>
+<center>
+<section id='winAward' class='award'></section>
+<section id='lossAward' class='award'></section>
+<section id='gameAward' class='award'></section>
+</center>
 <script>
 // buttons toggle so is not on page with rock, paper, and scissor buttons
+draw_award();
 $("#waiting1").toggle();
 $("#waiting2").toggle();
 $("#waiting3").toggle();
@@ -48,7 +51,6 @@ $("#playAgainButton2").toggle();
 $("#playAgainButton3").toggle();
 setup();
 </script>
-	</center>	
 
 </section>
 </div>

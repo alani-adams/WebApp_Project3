@@ -1,2 +1,2 @@
 #!/bin/bash
-mysql -e"update user set win=49.5,loss=50 where userName='glb14e';" -uwww-p3 -p'1qaz!QAZ' p3
+mysql -e"update user set win=0,loss=99 where userName='glb14e';" -uwww-p3 -p'1qaz!QAZ' p3
