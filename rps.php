@@ -36,12 +36,26 @@ session_start();
 		</center>
 		<br/>	
 <center>
-<section id='winAward' class='award'></section>
-<section id='lossAward' class='award'></section>
-<section id='gameAward' class='award'></section>
+<div id='awardDiv' class='award'>
+  <img align="middle" id="firstwin" src="img/firstwin.png" alt="First Win Award!">
+  <img align="middle" id="a5win" src="img/5win.png" alt="5th Win Award!">
+  <img align="middle" id="a25win" src="img/25win.png" alt="25th Win Award!">
+  <img align="middle" id="a50win" src="img/50win.png" alt="50th Win Award!">
+  <img align="middle" id="firstloss" src="img/firstloss.png" alt="First Loss Award!">
+  <img align="middle" id="a5loss" src="img/5loss.png" alt="5th Loss Award!">
+  <img align="middle" id="a25loss" src="img/25loss.png" alt="25th Loss Award!">
+  <img align="middle" id="a50loss" src="img/50loss.png" alt="50th Loss Award!">
+  <img align="middle" id="a100games" src="img/100games.png" alt="100th Game Award!">
+  <img align="middle" id="a500games" src="img/500games.png" alt="500th Game Award!">
+  <img align="middle" id="a1000games" src="img/1000games.png" alt="1000th Game Award!">
+</div>
+
 </center>
 <script>
 // buttons toggle so is not on page with rock, paper, and scissor buttons
+$("#firstwin,#a5win,#a25win,#a50win").hide();
+$("#firstloss,#a5loss,#a25loss,#a50loss").hide();
+$("#a100games,#a500games,#a1000games").hide();
 draw_award();
 $("#waiting1").toggle();
 $("#waiting2").toggle();

@@ -522,15 +522,32 @@ window.alert(msg);
 }// end function
 
 function draw_award() {
-    node=document.getElementById('userLabel');
-    win=parseFloat(node.dataset.win);
-    loss=parseInt(node.dataset.loss);
-    var award=new Image();  
-var sum=parseFloat(win)+parseFloat(loss);
+  //$('.award').hide();
+  node=document.getElementById('userLabel');
+  win=parseFloat(node.dataset.win);
+  loss=parseInt(node.dataset.loss);
+  var sum=parseFloat(win)+parseFloat(loss);
 //draw winAwards
-  node=document.getElementById('winAward');
-  node.innerHTML="";
-  if (win >= 50) {
-
-  }
+if (win >= 50)
+  $("#a50win").show();
+else if ( win >= 25 )
+  $("#a25win").show();
+else if ( win >= 5 )
+  $("#a5win").show();
+else if ( win >= 1 )
+  $("#firstwin").show();
+if (loss >= 50)
+  $("#a50loss").show();
+else if (loss >= 25)
+  $("#a25loss").show();
+else if (loss >= 5)
+  $("#a5loss").show();
+else if (loss >= 1)
+  $("#firstloss").show();
+if (sum >= 1000)
+  $("#a1000games").show();
+else if (sum >= 500)
+  $("#a500games").show();
+else if (sum >= 100)
+  $("#a100games").show();
 }// end function

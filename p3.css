@@ -1,6 +1,6 @@
 main {
   display: flex;
-  
+   
 }
 
 #topList tr,th,td{
@@ -18,6 +18,10 @@ header {
 
 #logout {
 margin-left: 5%;
+}
+
+.award img{
+  width: 300px;
 }
 
 #login {
